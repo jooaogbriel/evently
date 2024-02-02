@@ -49,7 +49,7 @@ export async function POST(req: Request) {
       status: 400
     })
   }
- 
+
   // Get the ID and type
   const { id } = evt.data;
   const eventType = evt.type;
