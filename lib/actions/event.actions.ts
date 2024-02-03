@@ -6,7 +6,7 @@ import { connectToDatabase } from '@/lib/database'
 import Event from '@/lib/database/models/event.model'
 import User from '@/lib/database/models/user.model'
 import Category from '@/lib/database/models/category.model'
-import { handleError } from '@/lib/utils'
+// import { handleError } from '@/lib/utils'
 
 import {
   CreateEventParams,
@@ -40,7 +40,7 @@ export async function createEvent({ userId, event, path }: CreateEventParams) {
 
     return JSON.parse(JSON.stringify(newEvent))
   } catch (error) {
-    handleError(error)
+    console.log(error)
   }
 }
 
@@ -55,7 +55,7 @@ export async function getEventById(eventId: string) {
 
     return JSON.parse(JSON.stringify(event))
   } catch (error) {
-    handleError(error)
+    console.log(error)
   }
 }
 
@@ -78,7 +78,7 @@ export async function updateEvent({ userId, event, path }: UpdateEventParams) {
 
     return JSON.parse(JSON.stringify(updatedEvent))
   } catch (error) {
-    handleError(error)
+    console.log(error)
   }
 }
 
@@ -90,7 +90,7 @@ export async function deleteEvent({ eventId, path }: DeleteEventParams) {
     const deletedEvent = await Event.findByIdAndDelete(eventId)
     if (deletedEvent) revalidatePath(path)
   } catch (error) {
-    handleError(error)
+    console.log(error)
   }
 }
 
@@ -119,7 +119,7 @@ export async function getAllEvents({ query, limit = 6, page, category }: GetAllE
       totalPages: Math.ceil(eventsCount / limit),
     }
   } catch (error) {
-    handleError(error)
+    console.log(error)
   }
 }
 
@@ -141,7 +141,7 @@ export async function getEventsByUser({ userId, limit = 6, page }: GetEventsByUs
 
     return { data: JSON.parse(JSON.stringify(events)), totalPages: Math.ceil(eventsCount / limit) }
   } catch (error) {
-    handleError(error)
+    console.log(error)
   }
 }
 
@@ -168,6 +168,6 @@ export async function getRelatedEventsByCategory({
 
     return { data: JSON.parse(JSON.stringify(events)), totalPages: Math.ceil(eventsCount / limit) }
   } catch (error) {
-    handleError(error)
+    console.log(error)
   }
 }

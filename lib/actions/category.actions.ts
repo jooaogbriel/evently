@@ -13,7 +13,7 @@ export const createCategory = async ({ categoryName }: CreateCategoryParams) => 
 
     return JSON.parse(JSON.stringify(newCategory));
   } catch (error) {
-    handleError(error)
+    console.log(error)
   }
 }
 

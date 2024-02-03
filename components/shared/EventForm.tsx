@@ -99,6 +99,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
         console.log(error);
       }
     }
+    console.log(files)
   }
 
   return (
@@ -325,7 +326,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
           className="button col-span-2 w-full"
         >
           {form.formState.isSubmitting ? (
-            'Enviando...'
+            'Submitting...'
           ): `${type} Event `}</Button>
       </form>
     </Form>
